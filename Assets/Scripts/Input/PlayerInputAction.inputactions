@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Switch",
+                    "name": "Preview",
                     "type": "Button",
                     "id": "44b6b58d-a005-4548-8001-8389e3e8979e",
                     "expectedControlType": "Button",
@@ -162,7 +162,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "Switch",
+                    "action": "Preview",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
