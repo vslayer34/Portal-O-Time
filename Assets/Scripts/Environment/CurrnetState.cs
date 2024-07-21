@@ -16,7 +16,6 @@ public class CurrnetState : EnvironmentState
         foreach (var environmentObject in EnvironmentPieces)
         {
             environmentObject.gameObject.SetActive(true);
-            Debug.Log($"{environmentObject.name} enabled");
         }
     }
 

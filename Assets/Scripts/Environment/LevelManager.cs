@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    public event Action OnLevelStart;
+    public Action OnEnvronmentStateSwitch;
     
 
 
@@ -20,8 +20,15 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        PlayerInput.Instance.OnSwitchPressed += PlayerInput_OnSwitchPressed;
+    }
 
+    private void OnDisable()
+    {
+        PlayerInput.Instance.OnSwitchPressed -= PlayerInput_OnSwitchPressed;
     }
 
     // Member Methods------------------------------------------------------------------------------
+
+    private void PlayerInput_OnSwitchPressed() => Instance.OnEnvronmentStateSwitch?.Invoke();
 }

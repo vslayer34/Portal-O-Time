@@ -6,9 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField, Tooltip("Required Components")]
-    private PlayerInput _playerInput;
-
     private CharacterController _characterController;
 
 
@@ -43,14 +40,14 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
 
-        _playerInput.OnJumpPressed += PlayerInput_OnJumpPressed;
+        PlayerInput.Instance.OnJumpPressed += PlayerInput_OnJumpPressed;
     }
 
     private void Update()
     {
         IsGrounded = Physics.CheckSphere(transform.position, GROUND_CHECK_SPHERE_RADIUS, _groundLayerMask);
 
-        _moveDirection = transform.forward * _playerInput.InputVectorNormalized.y + transform.right * _playerInput.InputVectorNormalized.x;
+        _moveDirection = transform.forward * PlayerInput.Instance.InputVectorNormalized.y + transform.right * PlayerInput.Instance.InputVectorNormalized.x;
 
         if (!_isGrounded)
         {
@@ -65,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerInput.OnJumpPressed -= PlayerInput_OnJumpPressed;
+        PlayerInput.Instance.OnJumpPressed -= PlayerInput_OnJumpPressed;
     }
 
     // Signal Methods------------------------------------------------------------------------------

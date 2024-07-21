@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    public static PlayerInput Instance { get; private set; }
     public event Action OnJumpPressed;
+    public event Action OnSwitchPressed;
 
     private PlayerInputAction _playerInputAction;
 
@@ -16,6 +18,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _playerInputAction = new PlayerInputAction();
         _playerInputAction.Player.Enable();
     }
@@ -23,6 +26,7 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         _playerInputAction.Player.Jump.performed += Jump_Performed;
+        _playerInputAction.Player.Switch.performed += Switch_Performed;
     }
 
     private void Update()
@@ -33,10 +37,8 @@ public class PlayerInput : MonoBehaviour
     // Member Methods------------------------------------------------------------------------------
     // Signal Methods------------------------------------------------------------------------------
 
-    private void Jump_Performed(InputAction.CallbackContext context)
-    {
-        OnJumpPressed?.Invoke();
-    }
+    private void Jump_Performed(InputAction.CallbackContext context) => OnJumpPressed?.Invoke();
+    private void Switch_Performed(InputAction.CallbackContext context) => OnSwitchPressed?.Invoke();
 
     // Getters & Setters---------------------------------------------------------------------------
 

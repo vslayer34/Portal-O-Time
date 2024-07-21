@@ -13,11 +13,9 @@ public class PastState : EnvironmentState
     // Member Methods------------------------------------------------------------------------------
     protected override void InitializeEnvironment()
     {
-        Debug.Log("Past State");
         foreach (var environmentObject in EnvironmentPieces)
         {
             environmentObject.gameObject.SetActive(false);
-            Debug.Log($"{environmentObject.name} disabled");
         }
     }
     // Signal Methods------------------------------------------------------------------------------
