@@ -14,7 +14,7 @@ public class MouseLook : MonoBehaviour
     private const float MIN_LOOK_ANGLE = -90.0f;
     private const float MAX_LOOK_ANGLE = 90.0f;
 
-    
+        
     private Vector2 _mouseDelta;
     private float _mouseXDirection;
     private float _mouseYDirection;
