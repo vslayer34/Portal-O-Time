@@ -36,7 +36,7 @@ public class MouseLook : MonoBehaviour
         _mouseYDirection = _mouseDelta.y * _mouseSensitivity * Time.deltaTime;
 
         // Horizontal direction
-        transform.Rotate(Vector3.up, +_mouseXDirection);
+        transform.Rotate(Vector3.up, _mouseXDirection);
 
         // vertical direction
         

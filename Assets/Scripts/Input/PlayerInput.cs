@@ -4,7 +4,7 @@ public class PlayerInput : MonoBehaviour
 {
     private PlayerInputAction _playerInputAction;
 
-    private Vector2 _inputDirection;
+    private Vector2 _inputVector;
 
 
 
@@ -18,13 +18,13 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        _inputDirection = _playerInputAction.Player.Move.ReadValue<Vector2>();
+        _inputVector = _playerInputAction.Player.Move.ReadValue<Vector2>();
     }
 
     // Member Methods------------------------------------------------------------------------------
     // Signal Methods------------------------------------------------------------------------------
     // Getters & Setters---------------------------------------------------------------------------
 
-    public Vector2 InputDirection { get => _inputDirection; }
-    public Vector2 InputDirectionNormalized { get => _inputDirection.normalized; }
+    public Vector2 InputVector { get => _inputVector; }
+    public Vector2 InputVectorNormalized { get => _inputVector.normalized; }
 }
