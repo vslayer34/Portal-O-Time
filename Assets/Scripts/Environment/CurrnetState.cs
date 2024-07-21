@@ -8,12 +8,10 @@ public class CurrnetState : EnvironmentState
     protected override void Start()
     {
         base.Start();
-        LevelManager.Instance.OnLevelStart += LevelManager_LevelStart;
     }
 
-    // Signal Methods------------------------------------------------------------------------------
-
-    protected override void LevelManager_LevelStart()
+    // Member Methods------------------------------------------------------------------------------
+    protected override void InitializeEnvironment()
     {
         foreach (var environmentObject in EnvironmentPieces)
         {
@@ -21,4 +19,6 @@ public class CurrnetState : EnvironmentState
             Debug.Log($"{environmentObject.name} enabled");
         }
     }
+
+    // Signal Methods------------------------------------------------------------------------------
 }

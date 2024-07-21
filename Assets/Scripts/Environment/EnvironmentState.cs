@@ -20,7 +20,7 @@ public abstract class EnvironmentState : MonoBehaviour
     {
         FillTheObjectsList();
         
-        // LevelManager.Instance.OnLevelStart += LevelManager_LevelStart;
+        InitializeEnvironment();
     }
 
     // Member Methods------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ public abstract class EnvironmentState : MonoBehaviour
         }
     }
 
-    // Signal Methods------------------------------------------------------------------------------
+    protected virtual void InitializeEnvironment() { }
 
-    protected virtual void LevelManager_LevelStart() { }
+    // Signal Methods------------------------------------------------------------------------------
 }

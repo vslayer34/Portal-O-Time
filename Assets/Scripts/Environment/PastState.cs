@@ -8,12 +8,10 @@ public class PastState : EnvironmentState
     protected override void Start()
     {
         base.Start();
-
-        LevelManager.Instance.OnLevelStart += LevelManager_LevelStart;
     }
-    // Signal Methods------------------------------------------------------------------------------
 
-    protected override void LevelManager_LevelStart()
+    // Member Methods------------------------------------------------------------------------------
+    protected override void InitializeEnvironment()
     {
         Debug.Log("Past State");
         foreach (var environmentObject in EnvironmentPieces)
@@ -22,4 +20,5 @@ public class PastState : EnvironmentState
             Debug.Log($"{environmentObject.name} disabled");
         }
     }
+    // Signal Methods------------------------------------------------------------------------------
 }

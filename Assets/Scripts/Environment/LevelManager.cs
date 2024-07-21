@@ -20,14 +20,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeEnvironment();
+
     }
 
     // Member Methods------------------------------------------------------------------------------
-
-    private void InitializeEnvironment()
-    {
-        OnLevelStart?.Invoke();
-        Debug.Log("Invoked");
-    }
 }
