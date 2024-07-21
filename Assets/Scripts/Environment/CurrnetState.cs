@@ -13,11 +13,28 @@ public class CurrnetState : EnvironmentState
     // Member Methods------------------------------------------------------------------------------
     protected override void InitializeEnvironment()
     {
-        foreach (var environmentObject in EnvironmentPieces)
-        {
-            environmentObject.gameObject.SetActive(true);
-        }
+        SetEnvironmentState(true);
     }
 
     // Signal Methods------------------------------------------------------------------------------
+
+    protected override void LevelManager_EnvironmentStateSwitch()
+    {
+        base.LevelManager_EnvironmentStateSwitch();
+        
+        switch (_activeTimeline)
+        {
+            case ActiveTime.Current:
+                SetEnvironmentState(true);
+                break;
+            
+            case ActiveTime.Past:
+                SetEnvironmentState(false);
+                break;
+            
+            default:
+                Debug.LogError("There's no such state");
+                break;
+        }
+    }
 }

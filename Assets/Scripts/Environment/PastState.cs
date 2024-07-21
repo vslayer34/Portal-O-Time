@@ -13,10 +13,27 @@ public class PastState : EnvironmentState
     // Member Methods------------------------------------------------------------------------------
     protected override void InitializeEnvironment()
     {
-        foreach (var environmentObject in EnvironmentPieces)
-        {
-            environmentObject.gameObject.SetActive(false);
-        }
+        SetEnvironmentState(false);
     }
     // Signal Methods------------------------------------------------------------------------------
+
+    protected override void LevelManager_EnvironmentStateSwitch()
+    {
+        base.LevelManager_EnvironmentStateSwitch();
+        
+        switch (_activeTimeline)
+        {
+            case ActiveTime.Current:
+                SetEnvironmentState(false);
+                break;
+            
+            case ActiveTime.Past:
+                SetEnvironmentState(true);
+                break;
+            
+            default:
+                Debug.LogError("There's no such state");
+                break;
+        }
+    }
 }
