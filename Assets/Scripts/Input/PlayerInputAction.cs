@@ -53,6 +53,24 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Primary Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d8fee06-fa67-4f6e-b2c6-917283fb614a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Secondary Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""d629fa20-ad8c-4efa-b4ee-dd72c3ac574e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -187,6 +205,28 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Preview"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b0f8c82-6b63-4016-838b-46830e354699"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Primary Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a69dbbf0-2cd5-4ef1-a9ab-26f022e348b7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Secondary Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -215,6 +255,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Preview = m_Player.FindAction("Preview", throwIfNotFound: true);
+        m_Player_PrimaryFire = m_Player.FindAction("Primary Fire", throwIfNotFound: true);
+        m_Player_SecondaryFire = m_Player.FindAction("Secondary Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -279,6 +321,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Preview;
+    private readonly InputAction m_Player_PrimaryFire;
+    private readonly InputAction m_Player_SecondaryFire;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -286,6 +330,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Preview => m_Wrapper.m_Player_Preview;
+        public InputAction @PrimaryFire => m_Wrapper.m_Player_PrimaryFire;
+        public InputAction @SecondaryFire => m_Wrapper.m_Player_SecondaryFire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -304,6 +350,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Preview.started += instance.OnPreview;
             @Preview.performed += instance.OnPreview;
             @Preview.canceled += instance.OnPreview;
+            @PrimaryFire.started += instance.OnPrimaryFire;
+            @PrimaryFire.performed += instance.OnPrimaryFire;
+            @PrimaryFire.canceled += instance.OnPrimaryFire;
+            @SecondaryFire.started += instance.OnSecondaryFire;
+            @SecondaryFire.performed += instance.OnSecondaryFire;
+            @SecondaryFire.canceled += instance.OnSecondaryFire;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -317,6 +369,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Preview.started -= instance.OnPreview;
             @Preview.performed -= instance.OnPreview;
             @Preview.canceled -= instance.OnPreview;
+            @PrimaryFire.started -= instance.OnPrimaryFire;
+            @PrimaryFire.performed -= instance.OnPrimaryFire;
+            @PrimaryFire.canceled -= instance.OnPrimaryFire;
+            @SecondaryFire.started -= instance.OnSecondaryFire;
+            @SecondaryFire.performed -= instance.OnSecondaryFire;
+            @SecondaryFire.canceled -= instance.OnSecondaryFire;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -348,5 +406,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPreview(InputAction.CallbackContext context);
+        void OnPrimaryFire(InputAction.CallbackContext context);
+        void OnSecondaryFire(InputAction.CallbackContext context);
     }
 }

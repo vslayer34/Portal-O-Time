@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
     public static PlayerInput Instance { get; private set; }
     public event Action OnJumpPressed;
     public event Action OnTogglePressed;
+    public event Action OnPrimaryFire;
+    public event Action OnSecondaryFire;
 
     private PlayerInputAction _playerInputAction;
 
@@ -27,6 +29,10 @@ public class PlayerInput : MonoBehaviour
     {
         _playerInputAction.Player.Jump.performed += Jump_Performed;
         _playerInputAction.Player.Preview.performed += Preview_Performed;
+
+        // primary and secondary fire
+        _playerInputAction.Player.PrimaryFire.performed += PrimaryFire_Performed;
+        _playerInputAction.Player.SecondaryFire.performed += SecondaryFire_Performed;
     }
 
     private void Update()
@@ -34,11 +40,24 @@ public class PlayerInput : MonoBehaviour
         _inputVector = _playerInputAction.Player.Move.ReadValue<Vector2>();
     }
 
+    private void OnDestroy()
+    {
+        _playerInputAction.Player.Jump.performed += Jump_Performed;
+        _playerInputAction.Player.Preview.performed += Preview_Performed;
+
+        _playerInputAction.Player.PrimaryFire.performed -= PrimaryFire_Performed;
+        _playerInputAction.Player.SecondaryFire.performed -= SecondaryFire_Performed;
+
+        _playerInputAction.Dispose();
+    }
+
     // Member Methods------------------------------------------------------------------------------
     // Signal Methods------------------------------------------------------------------------------
 
     private void Jump_Performed(InputAction.CallbackContext context) => OnJumpPressed?.Invoke();
     private void Preview_Performed(InputAction.CallbackContext context) => OnTogglePressed?.Invoke();
+    private void PrimaryFire_Performed(InputAction.CallbackContext context) => OnPrimaryFire?.Invoke();
+    private void SecondaryFire_Performed(InputAction.CallbackContext context) => OnSecondaryFire?.Invoke();
 
     // Getters & Setters---------------------------------------------------------------------------
 
