@@ -16,6 +16,10 @@ public class PortalGun : MonoBehaviour, IWeapon
 
     private PortalType _portalType;
 
+    // Keep track of the blue and orange portals
+    private int _bluePortalsAmount;
+    private int _orangePortalsAmount;
+
 
 
     // Game Loop methods---------------------------------------------------------------------------
@@ -29,6 +33,15 @@ public class PortalGun : MonoBehaviour, IWeapon
     {
         var newPortal = Instantiate(_portalProjectile, _portalsExitPotint.position, _portalsExitPotint.rotation);
         newPortal.InitiatePortal(transform.forward, portalType);
+
+        if (portalType == PortalType.Blue)
+        {
+            // _bluePortalsAmount++;
+        }
+        else
+        {
+            // _orangePortalsAmount++;
+        }
     }
     // Signal Methods------------------------------------------------------------------------------
 

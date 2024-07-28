@@ -7,6 +7,9 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
+    [SerializeField, Tooltip("reference to the level resources")]
+    private SO_LevelResources _levelResources;
+
     public enum Timeline
     {
         Current,
@@ -43,4 +46,5 @@ public class LevelManager : MonoBehaviour
     // Getters & Setters---------------------------------------------------------------------------
 
     public Timeline ActiveTimeline { get => _activeTimeline; }
+    public SO_LevelResources LevelResources { get => _levelResources; }
 }

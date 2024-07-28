@@ -23,7 +23,15 @@ public class PortalProjectile : MonoBehaviour
     [SerializeField, Tooltip("The mesh renderer for the visual asset"), Space(5)]
     private MeshRenderer _projectileMeshRenderer;
 
+
+    [SerializeField, Tooltip("Reference to the level resources")]
+    private SO_LevelResources _LevelResources;
+
     private const float PROJECTILE_SPEED = 500.0f;
+
+    private Vector3 _portalSpawnPoint;
+
+    private PortalType _portalType;
 
 
 
@@ -49,6 +57,7 @@ public class PortalProjectile : MonoBehaviour
 
     private void SetPortalType(PortalType portalType)
     {
+        _portalType = portalType;
         switch (portalType)
         {
             case PortalType.Blue:
@@ -66,9 +75,29 @@ public class PortalProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        // Vector3 _portalOffset = new Vector3()
+        
         if (other.gameObject.TryGetComponent(out PortableWall portableWall))
         {
-            Debug.Log(other.collider.ClosestPoint(transform.position));
+            _portalSpawnPoint = other.collider.ClosestPoint(transform.position);
+            if (_portalType == PortalType.Orange)
+            {
+                Instantiate(
+                _LevelResources.OrangePortal.transform, 
+                _portalSpawnPoint, 
+                portableWall.transform.rotation);
+
+                Debug.Log(other.transform.localRotation);
+            }
+            else
+            {
+                Instantiate(
+                _LevelResources.BluePortal.transform, 
+                _portalSpawnPoint, 
+                portableWall.transform.rotation);
+
+                Debug.Log(other.transform.localRotation);
+            }
         }
         // Debug.Log(other.gameObject.layer == (int)_portableWallLayer);
     }

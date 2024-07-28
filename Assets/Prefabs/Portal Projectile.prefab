@@ -54,6 +54,7 @@ MonoBehaviour:
     blueMaterial: {fileID: 2100000, guid: 3b6ac3bf68983c2f2a562d1c79c51cbb, type: 2}
     orangeMaterial: {fileID: 2100000, guid: f522a2913ee071be893c20e8cdff1d1f, type: 2}
   _projectileMeshRenderer: {fileID: 5083467094731917012}
+  _LevelResources: {fileID: 11400000, guid: 5b73cde81df07e4928275096f4ad9f0d, type: 2}
 --- !u!54 &7084501154166665800
 Rigidbody:
   m_ObjectHideFlags: 0

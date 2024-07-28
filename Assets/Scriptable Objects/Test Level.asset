@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27802c824e4a411c9b4b1a99786dc782, type: 3}
   m_Name: Test Level
   m_EditorClassIdentifier: 
-  <CurrentEnvirnment>k__BackingField: {fileID: 0}
-  <PastEnvironment>k__BackingField: {fileID: 0}
+  <AvailablePortals>k__BackingField:
+  - {fileID: 5488622716065866812, guid: 1d83b61613e01b058b1ea627fa10452e, type: 3}
+  - {fileID: 4871229613359424901, guid: 32b181706ce6b30f3a63278d9578b356, type: 3}
