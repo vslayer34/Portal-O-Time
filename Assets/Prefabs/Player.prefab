@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.555, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7857772499835806422}
   m_Father: {fileID: 6701068731677338747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &3840416054327792857
@@ -478,6 +479,7 @@ GameObject:
   - component: {fileID: 6913679843585099166}
   - component: {fileID: 3180974192850917999}
   - component: {fileID: 699750061354410404}
+  - component: {fileID: 6549442366251556142}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -572,3 +574,156 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _jumpngForce: 5
+--- !u!114 &6549442366251556142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4268882866420980746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc50255919fb734fbbeaa8ce0928ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5790856654107547327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7857772499835806422}
+  - component: {fileID: 7523121495976108281}
+  m_Layer: 0
+  m_Name: Gun Hold Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7857772499835806422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790856654107547327}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.059132166, z: -0, w: 0.9982502}
+  m_LocalPosition: {x: 0.5, y: -0.32299995, z: 0.4699993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1459175271818612485}
+  m_Father: {fileID: 1231129940885208047}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.78, z: 0}
+--- !u!114 &7523121495976108281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790856654107547327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87223a5701d3e5471889c38755ede96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &7125461440415295147
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7857772499835806422}
+    m_Modifications:
+    - target: {fileID: 2465335610549943474, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_Name
+      value: Portal Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2465335610549943474, guid: a507d7ac74bc18aa1b5543180b1232c8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4545103439084104473}
+  m_SourcePrefab: {fileID: 100100000, guid: a507d7ac74bc18aa1b5543180b1232c8, type: 3}
+--- !u!4 &1459175271818612485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8548589932170062254, guid: a507d7ac74bc18aa1b5543180b1232c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7125461440415295147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4671385928655264281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2465335610549943474, guid: a507d7ac74bc18aa1b5543180b1232c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7125461440415295147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4545103439084104473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671385928655264281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98359d21d12e309e1ae01eedce28ec1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
