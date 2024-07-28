@@ -12,14 +12,18 @@ internal struct PortalMaterial
 
 public class PortalProjectile : MonoBehaviour
 {
-    [SerializeField, Tooltip("Reference to the rigid body of the projectile")]
     private Rigidbody _rb;
+
+    [SerializeField, Tooltip("The layer mask for the wall that can hold portals")]
+    private LayerMask _portableWallLayer;
 
     [SerializeField, Header("Material properties"), Tooltip("The material types for the portal")]
     private PortalMaterial _materialVariants;
 
     [SerializeField, Tooltip("The mesh renderer for the visual asset"), Space(5)]
     private MeshRenderer _projectileMeshRenderer;
+
+    private const float PROJECTILE_SPEED = 500.0f;
 
 
 
@@ -40,12 +44,11 @@ public class PortalProjectile : MonoBehaviour
     public void InitiatePortal(Vector3 direction, PortalType portalType)
     {
         SetPortalType(portalType);
-        _rb.AddForce(direction * 100);
+        _rb.AddForce(direction * PROJECTILE_SPEED);
     }
 
     private void SetPortalType(PortalType portalType)
     {
-        Debug.Log(portalType);
         switch (portalType)
         {
             case PortalType.Blue:
@@ -59,5 +62,14 @@ public class PortalProjectile : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.TryGetComponent(out PortableWall portableWall))
+        {
+            Debug.Log(other.collider.ClosestPoint(transform.position));
+        }
+        // Debug.Log(other.gameObject.layer == (int)_portableWallLayer);
     }
 }

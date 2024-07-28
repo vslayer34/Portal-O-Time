@@ -33,7 +33,6 @@ public class ShootPortals : MonoBehaviour
     // Signal Methods------------------------------------------------------------------------------
     private void PlayerInput_PrimaryFire()
     {
-        Debug.Log("Primary fire");
         OnPortalGunFired?.Invoke(this, new OnPortalGunFiredEventArgs
         {
             portalType = PortalType.Blue
@@ -42,8 +41,6 @@ public class ShootPortals : MonoBehaviour
 
     private void PlayerInput_SecondaryFire()
     {
-        Debug.Log("Secondary fire");
-
         OnPortalGunFired?.Invoke(this, new OnPortalGunFiredEventArgs
         {
             portalType = PortalType.Orange
