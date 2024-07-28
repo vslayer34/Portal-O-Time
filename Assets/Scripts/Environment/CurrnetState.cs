@@ -13,23 +13,36 @@ public class CurrnetState : EnvironmentState
     // Member Methods------------------------------------------------------------------------------
     protected override void InitializeEnvironment()
     {
-        SetEnvironmentState(true);
+        if (_activeTimeline == ActiveTime.Current)
+        {
+            SetEnvironmentState(true);
+        }
+        else
+        {
+            SetEnvironmentState(false);
+        }
     }
 
     // Signal Methods------------------------------------------------------------------------------
 
-    protected override void LevelManager_EnvironmentStateSwitch()
+    protected override void LevelManager_EnvironmentToggleSwitched()
     {
-        base.LevelManager_EnvironmentStateSwitch();
+        base.LevelManager_EnvironmentToggleSwitched();
         
         switch (_activeTimeline)
         {
             case ActiveTime.Current:
-                SetEnvironmentState(true);
                 break;
             
             case ActiveTime.Past:
-                SetEnvironmentState(false);
+                if (_toggledTimeline == ToggledTimeline.On)
+                {
+                    SetEnvironmentState(true);
+                }
+                else
+                {
+                    SetEnvironmentState(false);
+                }
                 break;
             
             default:

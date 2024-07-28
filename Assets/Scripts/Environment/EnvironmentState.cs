@@ -13,7 +13,17 @@ public abstract class EnvironmentState : MonoBehaviour
         Past
     }
 
+    protected enum ToggledTimeline
+    {
+        // None,
+        // Current,
+        // Past
+        On,
+        Off
+    }
+
     protected ActiveTime _activeTimeline;
+    protected ToggledTimeline _toggledTimeline;
 
 
 
@@ -27,7 +37,11 @@ public abstract class EnvironmentState : MonoBehaviour
     protected virtual void Start()
     {
         _activeTimeline = ActiveTime.Current;
-        LevelManager.Instance.OnEnvronmentStateSwitch += LevelManager_EnvironmentStateSwitch;
+        // _activeTimeline = ActiveTime.Past;
+
+        _toggledTimeline = ToggledTimeline.Off;
+
+        LevelManager.Instance.OnEnvironmentToggleSwitch += LevelManager_EnvironmentToggleSwitched;
         FillTheObjectsList();
         
         InitializeEnvironment();
@@ -35,7 +49,7 @@ public abstract class EnvironmentState : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        LevelManager.Instance.OnEnvronmentStateSwitch -= LevelManager_EnvironmentStateSwitch;
+        LevelManager.Instance.OnEnvironmentToggleSwitch -= LevelManager_EnvironmentToggleSwitched;
     }
 
     // Member Methods------------------------------------------------------------------------------
@@ -64,16 +78,25 @@ public abstract class EnvironmentState : MonoBehaviour
 
     // Signal Methods------------------------------------------------------------------------------
 
-    protected virtual void LevelManager_EnvironmentStateSwitch()
+    protected virtual void LevelManager_EnvironmentToggleSwitched()
     {
-        if (_activeTimeline == ActiveTime.Current)
+        if (_toggledTimeline == ToggledTimeline.Off)
         {
-            _activeTimeline = ActiveTime.Past;
+            _toggledTimeline = ToggledTimeline.On;
         }
         else
         {
-            _activeTimeline = ActiveTime.Current;
+            _toggledTimeline = ToggledTimeline.Off;
         }
+        // if (_activeTimeline == ActiveTime.Current)
+        // {
+        //     _activeTimeline = ActiveTime.Past;
+        //     _toggledTimeline = ToggledTimeline.Past;
+        // }
+        // else
+        // {
+        //     _activeTimeline = ActiveTime.Current;
+        // }
 
         Debug.Log($"Parent current state {_activeTimeline}");
     }

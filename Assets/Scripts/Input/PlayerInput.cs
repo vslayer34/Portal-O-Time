@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     public static PlayerInput Instance { get; private set; }
     public event Action OnJumpPressed;
-    public event Action OnPreviewPressed;
+    public event Action OnTogglePressed;
 
     private PlayerInputAction _playerInputAction;
 
@@ -38,7 +38,7 @@ public class PlayerInput : MonoBehaviour
     // Signal Methods------------------------------------------------------------------------------
 
     private void Jump_Performed(InputAction.CallbackContext context) => OnJumpPressed?.Invoke();
-    private void Preview_Performed(InputAction.CallbackContext context) => OnPreviewPressed?.Invoke();
+    private void Preview_Performed(InputAction.CallbackContext context) => OnTogglePressed?.Invoke();
 
     // Getters & Setters---------------------------------------------------------------------------
 

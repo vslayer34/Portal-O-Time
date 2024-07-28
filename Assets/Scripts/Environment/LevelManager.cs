@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
         Past
     }
 
-    public Action OnEnvronmentStateSwitch;
+    public Action OnEnvironmentToggleSwitch;
     private Timeline _activeTimeline;
     
 
@@ -28,17 +28,17 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         _activeTimeline = Timeline.Current;
-        PlayerInput.Instance.OnPreviewPressed += PlayerInput_OnSwitchPressed;
+        PlayerInput.Instance.OnTogglePressed += PlayerInput_OnSwitchPressed;
     }
 
     private void OnDisable()
     {
-        PlayerInput.Instance.OnPreviewPressed -= PlayerInput_OnSwitchPressed;
+        PlayerInput.Instance.OnTogglePressed -= PlayerInput_OnSwitchPressed;
     }
 
     // Member Methods------------------------------------------------------------------------------
 
-    private void PlayerInput_OnSwitchPressed() => Instance.OnEnvronmentStateSwitch?.Invoke();
+    private void PlayerInput_OnSwitchPressed() => Instance.OnEnvironmentToggleSwitch?.Invoke();
 
     // Getters & Setters---------------------------------------------------------------------------
 

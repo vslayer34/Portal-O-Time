@@ -13,22 +13,37 @@ public class PastState : EnvironmentState
     // Member Methods------------------------------------------------------------------------------
     protected override void InitializeEnvironment()
     {
-        SetEnvironmentState(false);
+        if (_activeTimeline == ActiveTime.Past)
+        {
+            SetEnvironmentState(true);
+        }
+        else
+        {
+            SetEnvironmentState(false);
+        }
     }
     // Signal Methods------------------------------------------------------------------------------
 
-    protected override void LevelManager_EnvironmentStateSwitch()
+    protected override void LevelManager_EnvironmentToggleSwitched()
     {
-        base.LevelManager_EnvironmentStateSwitch();
+        base.LevelManager_EnvironmentToggleSwitched();
         
         switch (_activeTimeline)
         {
             case ActiveTime.Current:
-                SetEnvironmentState(false);
+                if (_toggledTimeline == ToggledTimeline.On)
+                {
+                    SetEnvironmentState(true);
+                }
+                else
+                {
+                    SetEnvironmentState(false);
+                }
+                // SetEnvironmentState(false);
                 break;
             
             case ActiveTime.Past:
-                SetEnvironmentState(true);
+                // SetEnvironmentState(true);
                 break;
             
             default:
