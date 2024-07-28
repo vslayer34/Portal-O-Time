@@ -27,12 +27,13 @@ public class PortalGun : MonoBehaviour, IWeapon
     // Member Methods------------------------------------------------------------------------------
     private void ShootPortal(PortalType portalType)
     {
-        var newPortal = Instantiate(_portalProjectile, _portalsExitPotint.position, Quaternion.identity);
+        var newPortal = Instantiate(_portalProjectile, _portalsExitPotint.position, _portalsExitPotint.rotation);
+        newPortal.InitiatePortal(transform.forward, portalType);
     }
     // Signal Methods------------------------------------------------------------------------------
 
     private void ShootPortals_OnPortalGunFired(object sender, ShootPortals.OnPortalGunFiredEventArgs e)
     {
-        ShootPortal(_portalType);
+        ShootPortal(e.portalType);
     }
 }
