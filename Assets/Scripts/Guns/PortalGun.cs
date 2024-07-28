@@ -8,7 +8,11 @@ public class PortalGun : MonoBehaviour, IWeapon
     [SerializeField, Tooltip("Reference to the player shooting script")]
     private ShootPortals _playerPortalControls;
 
-    [SerializeField, Tooltip("Portal projectile")]
+    [SerializeField, Tooltip("Reference to the projectiles spawn point")]
+    private Transform _portalsExitPotint;
+
+    [SerializeField, Tooltip("Portal projectile"), Space(5)]
+    private PortalProjectile _portalProjectile;
 
     private PortalType _portalType;
 
@@ -23,12 +27,12 @@ public class PortalGun : MonoBehaviour, IWeapon
     // Member Methods------------------------------------------------------------------------------
     private void ShootPortal(PortalType portalType)
     {
-
+        var newPortal = Instantiate(_portalProjectile, _portalsExitPotint.position, Quaternion.identity);
     }
     // Signal Methods------------------------------------------------------------------------------
 
     private void ShootPortals_OnPortalGunFired(object sender, ShootPortals.OnPortalGunFiredEventArgs e)
     {
-        
+        ShootPortal(_portalType);
     }
 }

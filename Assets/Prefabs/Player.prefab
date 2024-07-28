@@ -727,3 +727,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98359d21d12e309e1ae01eedce28ec1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPortalControls: {fileID: 6549442366251556142}
+  _portalsExitPotint: {fileID: 6135845123098073420}
+  _portalProjectile: {fileID: -1186466620139860080, guid: aa90bd732e3d5a60cbb50c6fe4362300,
+    type: 3}
+--- !u!4 &6135845123098073420 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4018442101051146215, guid: a507d7ac74bc18aa1b5543180b1232c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7125461440415295147}
+  m_PrefabAsset: {fileID: 0}
