@@ -989,6 +989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157282520}
   - component: {fileID: 1157282521}
+  - component: {fileID: 1157282522}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -1024,6 +1025,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelResources: {fileID: 11400000, guid: 5b73cde81df07e4928275096f4ad9f0d, type: 2}
+--- !u!114 &1157282522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157282519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad7525bed0400dabaf587aa7b68d1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _LevelResources: {fileID: 11400000, guid: 5b73cde81df07e4928275096f4ad9f0d, type: 2}
 --- !u!1 &1622051235
 GameObject:
   m_ObjectHideFlags: 0
