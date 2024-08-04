@@ -88,9 +88,12 @@ public class PortalProjectile : MonoBehaviour
                 // portableWall.transform.rotation);
 
                 _LevelResources.OrangePortal.gameObject.SetActive(true);
-                _LevelResources.OrangePortal.transform.position = _portalSpawnPoint;
+                // _LevelResources.OrangePortal.transform.position = _portalSpawnPoint;
+
+                _LevelResources.OrangePortal.transform.SetPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
 
 
+                Debug.Log(portableWall.transform.localRotation);
                 Debug.Log(other.transform.localRotation);
             }
             else if (_portalType == PortalType.Blue)
@@ -101,7 +104,10 @@ public class PortalProjectile : MonoBehaviour
                 // portableWall.transform.rotation);
 
                 _LevelResources.BluePortal.gameObject.SetActive(true);
-                _LevelResources.BluePortal.transform.position = _portalSpawnPoint;
+                // _LevelResources.BluePortal.transform.position = _portalSpawnPoint;
+
+                _LevelResources.BluePortal.transform.SetPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
+                _LevelResources.BluePortal.transform.SetLocalPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
 
                 Debug.Log(other.transform.localRotation);
             }
