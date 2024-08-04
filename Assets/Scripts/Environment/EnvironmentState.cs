@@ -108,5 +108,6 @@ public abstract class EnvironmentState : MonoBehaviour
     {
         _activeTimeline = activeTimeline;
         _toggledTimeline = ToggledTimeline.Off;
+        OnToggleOff?.Invoke(activeTimeline);
     }
 }
