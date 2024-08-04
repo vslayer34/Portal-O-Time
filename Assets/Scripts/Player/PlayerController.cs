@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
         PlayerInput.Instance.OnJumpPressed -= PlayerInput_OnJumpPressed;
     }
 
+    // Member Methods------------------------------------------------------------------------------
+    public void SetCharacterControllerActive(bool isActive) => _characterController.enabled = isActive;
     // Signal Methods------------------------------------------------------------------------------
 
     private void PlayerInput_OnJumpPressed()
@@ -96,5 +98,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public CharacterController CharacterController { get => _characterController; }
+    // public CharacterController CharacterController { get => _characterController; }
 }

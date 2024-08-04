@@ -14,10 +14,10 @@ public class OrangePortal : Portal
             {
                 Debug.Log(_LevelResources.BluePortal.transform.position);
 
-                player.CharacterController.enabled = false;
+                player.SetCharacterControllerActive(false);
                 player.transform.position = _LevelResources.BluePortal.TeleportPoint.position;
                 player.transform.forward = _LevelResources.BluePortal.TeleportPoint.transform.forward;
-                player.CharacterController.enabled = true;
+                player.SetCharacterControllerActive(true);
             }
             else
             {
