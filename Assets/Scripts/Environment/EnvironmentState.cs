@@ -105,5 +105,6 @@ public abstract class EnvironmentState : MonoBehaviour
     protected virtual void LevelManager_EnvironmentSwitched(Timeline activeTimeline)
     {
         _activeTimeline = activeTimeline;
+        _toggledTimeline = ToggledTimeline.Off;
     }
 }
