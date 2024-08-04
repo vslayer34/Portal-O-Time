@@ -87,10 +87,13 @@ public class PortalProjectile : MonoBehaviour
                 // _portalSpawnPoint, 
                 // portableWall.transform.rotation);
 
-                _LevelResources.OrangePortal.gameObject.SetActive(true);
-                // _LevelResources.OrangePortal.transform.position = _portalSpawnPoint;
+                if (portableWall is PortablePast)
+                {
+                    _LevelResources.OrangePortal.gameObject.SetActive(true);
+                    // _LevelResources.OrangePortal.transform.position = _portalSpawnPoint;
 
-                _LevelResources.OrangePortal.transform.SetPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
+                    _LevelResources.OrangePortal.transform.SetPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
+                }
 
 
                 // Debug.Log(portableWall.transform.localRotation);
@@ -103,11 +106,16 @@ public class PortalProjectile : MonoBehaviour
                 // _portalSpawnPoint, 
                 // portableWall.transform.rotation);
 
-                _LevelResources.BluePortal.gameObject.SetActive(true);
-                // _LevelResources.BluePortal.transform.position = _portalSpawnPoint;
+                if (portableWall is PortableCurrent)
+                {
+                    _LevelResources.BluePortal.gameObject.SetActive(true);
+                    // _LevelResources.BluePortal.transform.position = _portalSpawnPoint;
 
-                _LevelResources.BluePortal.transform.SetPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
-                _LevelResources.BluePortal.transform.SetLocalPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
+                    _LevelResources.BluePortal.transform.SetPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
+                    _LevelResources.BluePortal.transform.SetLocalPositionAndRotation(_portalSpawnPoint, portableWall.transform.rotation);
+                }
+
+                
 
                 // Debug.Log(other.transform.localRotation);
             }
