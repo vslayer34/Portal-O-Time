@@ -22,7 +22,7 @@ public abstract class EnvironmentState : MonoBehaviour
         Off
     }
 
-    protected ActiveTime _activeTimeline;
+    protected Timeline _activeTimeline;
     protected ToggledTimeline _toggledTimeline;
 
 
@@ -36,12 +36,13 @@ public abstract class EnvironmentState : MonoBehaviour
     
     protected virtual void Start()
     {
-        _activeTimeline = ActiveTime.Current;
+        _activeTimeline = Timeline.Current;
         // _activeTimeline = ActiveTime.Past;
 
         _toggledTimeline = ToggledTimeline.Off;
 
         LevelManager.Instance.OnEnvironmentToggleSwitch += LevelManager_EnvironmentToggleSwitched;
+        LevelManager.Instance.OnEnvironmentSwitched += LevelManager_EnvironmentSwitched;
         FillTheObjectsList();
         
         InitializeEnvironment();
@@ -99,5 +100,10 @@ public abstract class EnvironmentState : MonoBehaviour
         // }
 
         Debug.Log($"Parent current state {_activeTimeline}");
+    }
+
+    protected virtual void LevelManager_EnvironmentSwitched(Timeline activeTimeline)
+    {
+        _activeTimeline = activeTimeline;
     }
 }

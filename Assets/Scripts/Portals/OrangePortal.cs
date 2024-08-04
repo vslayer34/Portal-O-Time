@@ -18,6 +18,8 @@ public class OrangePortal : Portal
                 player.transform.position = _LevelResources.BluePortal.TeleportPoint.position;
                 player.transform.forward = _LevelResources.BluePortal.TeleportPoint.transform.forward;
                 player.SetCharacterControllerActive(true);
+
+                LevelManager.Instance.SwitchEnvironment();
             }
             else
             {

@@ -13,7 +13,7 @@ public class PastState : EnvironmentState
     // Member Methods------------------------------------------------------------------------------
     protected override void InitializeEnvironment()
     {
-        if (_activeTimeline == ActiveTime.Past)
+        if (_activeTimeline == Timeline.Past)
         {
             SetEnvironmentState(true);
         }
@@ -30,7 +30,7 @@ public class PastState : EnvironmentState
         
         switch (_activeTimeline)
         {
-            case ActiveTime.Current:
+            case Timeline.Current:
                 if (_toggledTimeline == ToggledTimeline.On)
                 {
                     SetEnvironmentState(true);
@@ -42,12 +42,30 @@ public class PastState : EnvironmentState
                 // SetEnvironmentState(false);
                 break;
             
-            case ActiveTime.Past:
+            case Timeline.Past:
                 // SetEnvironmentState(true);
                 break;
             
             default:
                 Debug.LogError("There's no such state");
+                break;
+        }
+    }
+
+    protected override void LevelManager_EnvironmentSwitched(Timeline activeTimeline)
+    {
+        base.LevelManager_EnvironmentSwitched(activeTimeline);
+        switch (activeTimeline)
+        {
+            case Timeline.Current:
+                SetEnvironmentState(false);
+                break;
+
+            case Timeline.Past:
+                SetEnvironmentState(true);
+                break;
+            default:
+                Debug.LogError("There's no such time state");
                 break;
         }
     }

@@ -13,7 +13,7 @@ public class CurrnetState : EnvironmentState
     // Member Methods------------------------------------------------------------------------------
     protected override void InitializeEnvironment()
     {
-        if (_activeTimeline == ActiveTime.Current)
+        if (_activeTimeline == Timeline.Current)
         {
             SetEnvironmentState(true);
         }
@@ -31,10 +31,10 @@ public class CurrnetState : EnvironmentState
         
         switch (_activeTimeline)
         {
-            case ActiveTime.Current:
+            case Timeline.Current:
                 break;
             
-            case ActiveTime.Past:
+            case Timeline.Past:
                 if (_toggledTimeline == ToggledTimeline.On)
                 {
                     SetEnvironmentState(true);
@@ -47,6 +47,25 @@ public class CurrnetState : EnvironmentState
             
             default:
                 Debug.LogError("There's no such state");
+                break;
+        }
+    }
+
+
+    protected override void LevelManager_EnvironmentSwitched(Timeline activeTimeline)
+    {
+        base.LevelManager_EnvironmentSwitched(activeTimeline);
+        switch (activeTimeline)
+        {
+            case Timeline.Current:
+                SetEnvironmentState(true);
+                break;
+
+            case Timeline.Past:
+                SetEnvironmentState(false);
+                break;
+            default:
+                Debug.LogError("There's no such time state");
                 break;
         }
     }
