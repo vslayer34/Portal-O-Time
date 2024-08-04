@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,9 +22,19 @@ public abstract class Portal : MonoBehaviour
 
 
     // Game Loop Methods---------------------------------------------------------------------------
-    private void Start()
+    private void Awake()
     {
         _transformArea = GetComponent<BoxCollider>();
+    }
+
+    private void Start()
+    {
+        EnvironmentState.OnToggleOff += EnvrinmentState_OnToggleOff;
+    }
+
+    private void OnDestroy()
+    {
+        EnvironmentState.OnToggleOff -= EnvrinmentState_OnToggleOff;
     }
 
     // Member Methods------------------------------------------------------------------------------
@@ -41,6 +52,23 @@ public abstract class Portal : MonoBehaviour
         _isPlayerTeleporting = false;
     }
 
+    // Signal Methods------------------------------------------------------------------------------
+    private void EnvrinmentState_OnToggleOff(Timeline timeline)
+    {
+        switch (timeline)
+        {
+            case Timeline.Current:
+                _LevelResources.OrangePortal.gameObject.SetActive(false);
+                break;
+
+            case Timeline.Past:
+                _LevelResources.BluePortal.gameObject.SetActive(false);
+                break;
+            default:
+                Debug.LogError("No such time line");
+                break;
+        }
+    }
     // Getters & Setters---------------------------------------------------------------------------
 
     public Transform TeleportPoint { get => _teleportPoint; }

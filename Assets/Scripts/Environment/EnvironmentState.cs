@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,10 @@ public abstract class EnvironmentState : MonoBehaviour
     [field: SerializeField, Tooltip("list for the environment objects")]
     public List<Transform> EnvironmentPieces { get; protected set; }
 
-    protected enum ActiveTime
-    {
-        Current,
-        Past
-    }
+    /// <summary>
+    /// Invoked when the toggle is off to remove the portals
+    /// </summary>
+    public static event Action<Timeline> OnToggleOff;
 
     protected enum ToggledTimeline
     {
@@ -51,6 +51,7 @@ public abstract class EnvironmentState : MonoBehaviour
     protected virtual void OnDisable()
     {
         LevelManager.Instance.OnEnvironmentToggleSwitch -= LevelManager_EnvironmentToggleSwitched;
+        OnToggleOff = null;
     }
 
     // Member Methods------------------------------------------------------------------------------
@@ -88,6 +89,7 @@ public abstract class EnvironmentState : MonoBehaviour
         else
         {
             _toggledTimeline = ToggledTimeline.Off;
+            OnToggleOff?.Invoke(_activeTimeline);
         }
         // if (_activeTimeline == ActiveTime.Current)
         // {
