@@ -55,7 +55,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Primary Fire"",
+                    ""name"": ""PrimaryFire"",
                     ""type"": ""Button"",
                     ""id"": ""1d8fee06-fa67-4f6e-b2c6-917283fb614a"",
                     ""expectedControlType"": ""Button"",
@@ -64,9 +64,18 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Secondary Fire"",
+                    ""name"": ""SecondaryFire"",
                     ""type"": ""Button"",
                     ""id"": ""d629fa20-ad8c-4efa-b4ee-dd72c3ac574e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Clear"",
+                    ""type"": ""Button"",
+                    ""id"": ""c11c8fbd-2638-4d8a-b16b-fc1ca6012ea2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -213,7 +222,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Primary Fire"",
+                    ""action"": ""PrimaryFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -224,7 +233,18 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Secondary Fire"",
+                    ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f95eced-0c05-497a-9767-d88b318a6fac"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Clear"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -255,8 +275,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Preview = m_Player.FindAction("Preview", throwIfNotFound: true);
-        m_Player_PrimaryFire = m_Player.FindAction("Primary Fire", throwIfNotFound: true);
-        m_Player_SecondaryFire = m_Player.FindAction("Secondary Fire", throwIfNotFound: true);
+        m_Player_PrimaryFire = m_Player.FindAction("PrimaryFire", throwIfNotFound: true);
+        m_Player_SecondaryFire = m_Player.FindAction("SecondaryFire", throwIfNotFound: true);
+        m_Player_Clear = m_Player.FindAction("Clear", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -323,6 +344,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Preview;
     private readonly InputAction m_Player_PrimaryFire;
     private readonly InputAction m_Player_SecondaryFire;
+    private readonly InputAction m_Player_Clear;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -332,6 +354,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Preview => m_Wrapper.m_Player_Preview;
         public InputAction @PrimaryFire => m_Wrapper.m_Player_PrimaryFire;
         public InputAction @SecondaryFire => m_Wrapper.m_Player_SecondaryFire;
+        public InputAction @Clear => m_Wrapper.m_Player_Clear;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -356,6 +379,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @SecondaryFire.started += instance.OnSecondaryFire;
             @SecondaryFire.performed += instance.OnSecondaryFire;
             @SecondaryFire.canceled += instance.OnSecondaryFire;
+            @Clear.started += instance.OnClear;
+            @Clear.performed += instance.OnClear;
+            @Clear.canceled += instance.OnClear;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -375,6 +401,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @SecondaryFire.started -= instance.OnSecondaryFire;
             @SecondaryFire.performed -= instance.OnSecondaryFire;
             @SecondaryFire.canceled -= instance.OnSecondaryFire;
+            @Clear.started -= instance.OnClear;
+            @Clear.performed -= instance.OnClear;
+            @Clear.canceled -= instance.OnClear;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -408,5 +437,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnPreview(InputAction.CallbackContext context);
         void OnPrimaryFire(InputAction.CallbackContext context);
         void OnSecondaryFire(InputAction.CallbackContext context);
+        void OnClear(InputAction.CallbackContext context);
     }
 }

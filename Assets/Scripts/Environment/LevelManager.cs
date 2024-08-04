@@ -36,16 +36,16 @@ public class LevelManager : MonoBehaviour
     {
         _activeTimeline = Timeline.Current;
         PlayerInput.Instance.OnTogglePressed += PlayerInput_OnSwitchPressed;
+        PlayerInput.Instance.OnClearPortals += PlayerInput_OnClearPortals;
     }
 
     private void OnDisable()
     {
         PlayerInput.Instance.OnTogglePressed -= PlayerInput_OnSwitchPressed;
+        PlayerInput.Instance.OnClearPortals -= PlayerInput_OnClearPortals;
     }
 
     // Member Methods------------------------------------------------------------------------------
-
-    private void PlayerInput_OnSwitchPressed() => Instance.OnEnvironmentToggleSwitch?.Invoke();
     public void SwitchEnvironment()
     {
         if (_activeTimeline == Timeline.Current)
@@ -60,6 +60,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    // Signal Methods------------------------------------------------------------------------------
+
+    private void PlayerInput_OnSwitchPressed() => Instance.OnEnvironmentToggleSwitch?.Invoke();
+    private void PlayerInput_OnClearPortals()
+    {
+        _levelResources.BluePortal.gameObject.SetActive(false);
+        _levelResources.OrangePortal.gameObject.SetActive(false);
+    }
     // Getters & Setters---------------------------------------------------------------------------
 
     public Timeline ActiveTimeline { get => _activeTimeline; }

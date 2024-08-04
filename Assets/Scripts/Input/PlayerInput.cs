@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     public event Action OnTogglePressed;
     public event Action OnPrimaryFire;
     public event Action OnSecondaryFire;
+    public event Action OnClearPortals;
 
     private PlayerInputAction _playerInputAction;
 
@@ -33,6 +34,7 @@ public class PlayerInput : MonoBehaviour
         // primary and secondary fire
         _playerInputAction.Player.PrimaryFire.performed += PrimaryFire_Performed;
         _playerInputAction.Player.SecondaryFire.performed += SecondaryFire_Performed;
+        _playerInputAction.Player.Clear.performed += Clear_Performed;
     }
 
     private void Update()
@@ -47,6 +49,7 @@ public class PlayerInput : MonoBehaviour
 
         _playerInputAction.Player.PrimaryFire.performed -= PrimaryFire_Performed;
         _playerInputAction.Player.SecondaryFire.performed -= SecondaryFire_Performed;
+        _playerInputAction.Player.Clear.performed -= Clear_Performed;
 
         _playerInputAction.Dispose();
     }
@@ -58,6 +61,7 @@ public class PlayerInput : MonoBehaviour
     private void Preview_Performed(InputAction.CallbackContext context) => OnTogglePressed?.Invoke();
     private void PrimaryFire_Performed(InputAction.CallbackContext context) => OnPrimaryFire?.Invoke();
     private void SecondaryFire_Performed(InputAction.CallbackContext context) => OnSecondaryFire?.Invoke();
+    private void Clear_Performed(InputAction.CallbackContext context) => OnClearPortals?.Invoke();
 
     // Getters & Setters---------------------------------------------------------------------------
 

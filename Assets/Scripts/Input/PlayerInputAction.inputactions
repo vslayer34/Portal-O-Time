@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Clear",
+                    "type": "Button",
+                    "id": "c11c8fbd-2638-4d8a-b16b-fc1ca6012ea2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -203,6 +212,17 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "SecondaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f95eced-0c05-497a-9767-d88b318a6fac",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Clear",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
