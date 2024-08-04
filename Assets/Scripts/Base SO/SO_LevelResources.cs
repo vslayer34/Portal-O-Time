@@ -25,26 +25,26 @@ public class SO_LevelResources : ScriptableObject
     {
         get
         {
-            _bluePortal.gameObject.SetActive(true);
+            // _bluePortal.gameObject.SetActive(true);
             return  _bluePortal;
         }
         set
         {
-            _bluePortal.gameObject.SetActive(false);
             _bluePortal = value;
+            // _bluePortal.gameObject.SetActive(false);
         }
     }
     public OrangePortal OrangePortal
     {
         get
         {
-            _orangePortal.gameObject.SetActive(true);
+            // _orangePortal.gameObject.SetActive(true);
             return  _orangePortal;
         }
         set
         {
-            _orangePortal.gameObject.SetActive(false);
             _orangePortal = value;
+            // _orangePortal.gameObject.SetActive(false);
         }
     }
 }

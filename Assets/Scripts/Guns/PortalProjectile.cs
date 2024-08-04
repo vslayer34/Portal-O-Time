@@ -82,19 +82,26 @@ public class PortalProjectile : MonoBehaviour
             _portalSpawnPoint = other.collider.ClosestPoint(transform.position);
             if (_portalType == PortalType.Orange)
             {
-                Instantiate(
-                _LevelResources.OrangePortal.transform, 
-                _portalSpawnPoint, 
-                portableWall.transform.rotation);
+                // Instantiate(
+                // _LevelResources.OrangePortal.transform, 
+                // _portalSpawnPoint, 
+                // portableWall.transform.rotation);
+
+                _LevelResources.OrangePortal.gameObject.SetActive(true);
+                _LevelResources.OrangePortal.transform.position = _portalSpawnPoint;
+
 
                 Debug.Log(other.transform.localRotation);
             }
-            else
+            else if (_portalType == PortalType.Blue)
             {
-                Instantiate(
-                _LevelResources.BluePortal.transform, 
-                _portalSpawnPoint, 
-                portableWall.transform.rotation);
+                // Instantiate(
+                // _LevelResources.BluePortal.transform, 
+                // _portalSpawnPoint, 
+                // portableWall.transform.rotation);
+
+                _LevelResources.BluePortal.gameObject.SetActive(true);
+                _LevelResources.BluePortal.transform.position = _portalSpawnPoint;
 
                 Debug.Log(other.transform.localRotation);
             }

@@ -22,15 +22,17 @@ public class PoolManager : MonoBehaviour
             if (spawned is OrangePortal orangePortal)
             {
                 _LevelResources.OrangePortal = orangePortal;
+                _LevelResources.OrangePortal.gameObject.SetActive(false);
             }
-            else
+            else if (spawned is BluePortal bluePortal)
             {
-                _LevelResources.BluePortal = portal as BluePortal;
+                _LevelResources.BluePortal = bluePortal;
+                _LevelResources.BluePortal.gameObject.SetActive(false);
             }
         }
 
-        Debug.Log(_LevelResources.BluePortal);
-        Debug.Log(_LevelResources.OrangePortal);
+        // Debug.Log(_LevelResources.BluePortal);
+        // Debug.Log(_LevelResources.OrangePortal);
     }
 
     // Member Methods------------------------------------------------------------------------------
