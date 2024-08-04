@@ -95,4 +95,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public CharacterController CharacterController { get => _characterController; }
 }

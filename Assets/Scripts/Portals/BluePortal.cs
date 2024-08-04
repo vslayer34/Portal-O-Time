@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class BluePortal : Portal
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Member Methods------------------------------------------------------------------------------
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnTriggerEnter(Collider other)
     {
-        
+        if (other.TryGetComponent(out PlayerController player))
+        {
+            if (_LevelResources.OrangePortal.gameObject.activeSelf)
+            {
+                Debug.Log(_LevelResources.OrangePortal.transform.position);
+
+                player.CharacterController.enabled = false;
+                player.transform.position = _LevelResources.OrangePortal.TeleportPoint.position;
+                player.transform.forward = _LevelResources.OrangePortal.TeleportPoint.transform.forward;
+                player.CharacterController.enabled = true;
+            }
+            else
+            {
+                Debug.Log("No orange portal is available");
+            }
+        }
     }
 }

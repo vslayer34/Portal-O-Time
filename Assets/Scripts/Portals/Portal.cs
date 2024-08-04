@@ -4,15 +4,44 @@ using UnityEngine;
 
 public abstract class Portal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField, Tooltip("The portal type")]
+    protected PortalType _portalType;
+
+    [SerializeField, Tooltip("Reference to the game resources")]
+    protected SO_LevelResources _LevelResources;
+
+    [SerializeField, Tooltip("Reference to the teleport position")]
+    protected Transform _teleportPoint;
+
+
+    protected BoxCollider _transformArea;
+    // determine if the player is teporting or not
+    private bool _isPlayerTeleporting;
+
+
+
+    // Game Loop Methods---------------------------------------------------------------------------
+    private void Start()
     {
-        
+        _transformArea = GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Member Methods------------------------------------------------------------------------------
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        
+        if (_isPlayerTeleporting == false)
+        {
+            _isPlayerTeleporting = true;
+        }
     }
+
+    protected void OnTriggerExit(Collider other)
+    {
+        _isPlayerTeleporting = false;
+    }
+
+    // Getters & Setters---------------------------------------------------------------------------
+
+    public Transform TeleportPoint { get => _teleportPoint; }
 }
