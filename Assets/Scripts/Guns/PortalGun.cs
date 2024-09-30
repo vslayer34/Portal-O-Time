@@ -28,6 +28,11 @@ public class PortalGun : MonoBehaviour, IWeapon
         _playerPortalControls.OnPortalGunFired += ShootPortals_OnPortalGunFired;
     }
 
+    private void Update()
+    {
+        ShootRay();
+    }
+
     // Member Methods------------------------------------------------------------------------------
     private void ShootPortal(PortalType portalType)
     {
@@ -41,6 +46,14 @@ public class PortalGun : MonoBehaviour, IWeapon
         else
         {
             // _orangePortalsAmount++;
+        }
+    }
+
+    private void ShootRay()
+    {
+        if (Physics.Raycast(_portalsExitPotint.position, _portalsExitPotint.transform.forward, out RaycastHit hit))
+        {
+            Debug.Log(hit.collider.gameObject.name, hit.collider.gameObject);
         }
     }
     // Signal Methods------------------------------------------------------------------------------
