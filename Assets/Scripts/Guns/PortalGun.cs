@@ -14,6 +14,10 @@ public class PortalGun : MonoBehaviour, IWeapon
     [SerializeField, Tooltip("Portal projectile"), Space(5)]
     private PortalProjectile _portalProjectile;
 
+
+    [Header("Animations"), SerializeField, Tooltip("Reference to the animator script")]
+    private PortalGunAnimator _gunAnimator;
+
     private PortalType _portalType;
 
     // Keep track of the blue and orange portals
@@ -54,6 +58,10 @@ public class PortalGun : MonoBehaviour, IWeapon
         if (Physics.Raycast(_portalsExitPotint.position, _portalsExitPotint.transform.forward, out RaycastHit hit))
         {
             Debug.Log(hit.collider.gameObject.name, hit.collider.gameObject);
+            if (hit.collider.TryGetComponent(out PortableWall wall))
+            {
+                
+            }
         }
     }
     // Signal Methods------------------------------------------------------------------------------

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class PortalGunAnimator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField, Tooltip("Reference to the fun animator component")]
+    private Animator _gunAnimator;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
+    // Member Methods------------------------------------------------------------------------------
 }
